@@ -24,8 +24,12 @@ public class Main {
             System.out.println("User с именем – " + user.getName() + " добавлен в базу данных");
         }
 
-        userService.cleanUsersTable();
-        userService.dropUsersTable();
+        boolean isTest = false;
+
+        if (isTest) {
+            userService.cleanUsersTable();
+            userService.dropUsersTable();
+        }
 
     }
 }
