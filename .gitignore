@@ -1,0 +1,23 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Java / Maven
+/target/
+/out/
+/build/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# HTTP-запросы в IDE
+/httpRequests/
+
+# Datasource configs
+/dataSources/
+/dataSources.local.xml
+
+# JetBrains Shelf
+/shelf/
+/workspace.xml
