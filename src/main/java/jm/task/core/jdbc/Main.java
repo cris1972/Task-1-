@@ -2,23 +2,24 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
 public class Main {
-    public static void main(String[] args) {
-        // реализуйте алгоритм здесь
-        UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
-        userDaoJDBC.createUsersTable();
+    public static void main(String[] args) throws InterruptedException {
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.createUsersTable();
         System.out.println("---------------------");
-        userDaoJDBC.saveUser("Виктор", "Журенко", (byte)3);
-        userDaoJDBC.saveUser("Александр", "Ветров", (byte)2);
-        userDaoJDBC.saveUser("Иван", "Журенко", (byte)28);
-        userDaoJDBC.saveUser("Ольга", "Михайловская", (byte)45);
+        userService.saveUser("Виктор", "Журенко", (byte) 3);
+        userService.saveUser("Александр", "Ветров", (byte) 2);
+        userService.saveUser("Иван", "Журенко", (byte) 28);
+        userService.saveUser("Ольга", "Михайловская", (byte) 45);
         System.out.println("---------------------");
-        userDaoJDBC.getAllUsers();
+        userService.getAllUsers();
         System.out.println("---------------------");
-        userDaoJDBC.cleanUsersTable();
+        userService.cleanUsersTable();
         System.out.println("---------------------");
-        userDaoJDBC.dropUsersTable();
+        userService.dropUsersTable();
     }
 }
