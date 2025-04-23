@@ -1,25 +1,29 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        UserServiceImpl userService = new UserServiceImpl();
-        userService.createUsersTable();
-        System.out.println("---------------------");
-        userService.saveUser("Виктор", "Журенко", (byte) 3);
-        userService.saveUser("Александр", "Ветров", (byte) 2);
-        userService.saveUser("Иван", "Журенко", (byte) 28);
-        userService.saveUser("Ольга", "Михайловская", (byte) 45);
-        System.out.println("---------------------");
-        userService.getAllUsers();
-        System.out.println("---------------------");
-        userService.cleanUsersTable();
-        System.out.println("---------------------");
-        userService.dropUsersTable();
+    public static void main(String[] args) {
+        UserDao dao = new UserDaoJDBCImpl();
+        UserService service = new UserServiceImpl(dao);
+        service.createUsersTable();
+        log.info("---------------------");
+        service.saveUser("Виктор", "Журенко", (byte)3);
+        service.saveUser("Александр", "Ветров", (byte)2);
+        service.saveUser("Иван", "Журенко", (byte)28);
+        service.saveUser("Ольга", "Михайловская", (byte)45);
+        log.info("---------------------");
+        service.getAllUsers();
+        log.info("---------------------");
+        service.cleanUsersTable();
+        log.info("---------------------");
+        service.dropUsersTable();
     }
 }
